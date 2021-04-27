@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
   public errorLogin: any;
   public bSubmitted: boolean;
+  public hide:boolean = true;
 
   loginState$: LoginState;
 
@@ -47,4 +48,11 @@ export class LoginComponent implements OnInit {
     };
     this.store.dispatch(LoginAction.login({credentials}));
   }
+
+  public getErrorMessage(): string {
+    if(this.password.hasError('required')){
+      return "You must enter a password";
+    }
+  }
+
 }
