@@ -18,12 +18,6 @@ import { appReducers } from './app.reducers';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { FormsModule } from '@angular/forms';
 import { EffectsArray } from './app.reducers';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatInputModule} from '@angular/material/input';
-import {MatButtonModule} from '@angular/material/button';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatIconModule} from '@angular/material/icon';
-import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -36,8 +30,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     AppRoutingModule,
     FormsModule,
     LoginModule,
-    //ActivitiesModule,
-    //ProfileModule,
+    ActivitiesModule,
+    ProfileModule,
     StoreModule.forRoot( appReducers, {
       runtimeChecks: {
         strictStateImmutability: false,
@@ -56,12 +50,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
     ),
-    BrowserAnimationsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatIconModule,
-    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

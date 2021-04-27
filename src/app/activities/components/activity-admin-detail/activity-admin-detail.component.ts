@@ -31,6 +31,7 @@ export class ActivityAdminDetailComponent implements OnInit {
   eBeachesCategoryOptions = BeachesCategoryOptions;
   eSubcategory: any;
 
+
   constructor(private route: ActivatedRoute, private location: Location,
               private store: Store<AppState>) {
     // Se recoge el identificador de la actividad pasada por el navegador
