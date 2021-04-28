@@ -16,8 +16,8 @@ const routes: Routes = [
     { path: 'activity-list', component: ActivityListComponent },
     { path: 'activity-list/:id', component: ActivityListComponent },
     { path: 'activity-list-user/favorites', component: ActivityListComponent },
-    { path: 'profile-language/:uid', component: ProfileLanguageComponent },
-    { path: 'profile-language', component: ProfileLanguageComponent },
+    { path: 'profile-language/:uid', component: ProfileLanguageComponent },//
+    { path: 'profile-language', component: ProfileLanguageComponent },//
     { path: 'profile-education/:uid', component: ProfileEducationComponent },//
     { path: 'profile-education', component: ProfileEducationComponent },//
     { path: 'activities-admin-list', component: ActivitiesAdminListComponent },
