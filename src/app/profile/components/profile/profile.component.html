@@ -74,13 +74,8 @@
                 <input type="text" matInput formControlName="nif">
                 <!-- <mat-error *ngIf="profileForm.get('nif').errors?.errorNIF">Wrong NIF</mat-error> -->
             </mat-form-field>
-            <!-- <mat-error *ngIf="profileForm.errors?.errorNIF">Wrong NIF</mat-error> -->
-            <!-- Check NIF -->
-            <!-- <span style="color: red;" *ngIf="profileForm.errors">
-            <span *ngIf="profileForm.errors?.errorNIF">Wrong NIF</span>
-        </span>   -->
+            <mat-error *ngIf="profileForm.errors?.errorNIF">Wrong NIF</mat-error>
 
-            <!--<mat-error *ngIf="profileForm.get('surname').errors?-->
             <!-- About me -->
             <mat-form-field [style.width.vw]=80 appearance="fill">
                 <mat-label>About me</mat-label>
