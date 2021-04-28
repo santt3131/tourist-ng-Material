@@ -18,12 +18,15 @@ import { appReducers } from './app.reducers';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { FormsModule } from '@angular/forms';
 import { EffectsArray } from './app.reducers';
+import { ProgressSpinnerComponent } from './views/progress-spinner/progress-spinner.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ProgressSpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +53,7 @@ import { EffectsArray } from './app.reducers';
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
     ),
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
