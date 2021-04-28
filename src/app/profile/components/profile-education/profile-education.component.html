@@ -1,53 +1,60 @@
 <div class="container">
-    <form class="text-center border border-light p-5" [formGroup]="rForm" (submit)="submit()"> 
-        <div class="form-group">
+    <form class="text-center border border-light p-5" [formGroup]="rForm" (submit)="submit()">
+        <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="32px" class="form-group">
             <div>
-                <!-- Level -->
-                <label for="type">Type:</label>
-                <select (change)="onChangeTypeValue()" formControlName="type" class="form-control mb-4" placeholder="Type">
-                    <option [ngValue]="null">Select type...</option>                
-                    <option *ngFor="let type of eEducationTypes | keyvalue" [ngValue]="type.value">{{type.value}}</option>              
-                </select>
-                <span style="color: red;" *ngIf="rForm.get('type').errors && (rForm.get('type').touched || rForm.get('type').dirty)">                
-                    <span *ngIf="rForm.get('type').errors.required">Type is required</span>
-                </span>
+                <!-- Type -->
+                <mat-form-field [style.width.vw]=80 appearance="fill">
+                    <mat-label>Type:</mat-label>
+                    <mat-select (selectionChange)="onChangeTypeValue()" formControlName="type">
+                        <mat-option [value]="null">Select type..</mat-option>
+                        <mat-option *ngFor="let type of eEducationTypes | keyvalue " [value]="type.value">
+                            {{type.value}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
             </div>
             <div>
                 <!-- Level -->
-                <label for="level">Level:</label>
-                <select formControlName="level" name="level" class="form-control mb-4" placeholder="Level">
-                    <option [ngValue]="null">Select level...</option>                
-                    <option *ngFor="let level of eLevelTypes | keyvalue" [ngValue]="level.value">{{level.value}}</option>              
-                </select>
-                <span style="color: red;" *ngIf="rForm.get('level').errors && (rForm.get('level').touched || rForm.get('level').dirty)">                
-                    <span *ngIf="rForm.get('level').errors.required">Level is required</span>
-                </span>
+                <mat-form-field [style.width.vw]=80 appearance="fill">
+                    <mat-label>Level:</mat-label>
+                    <mat-select formControlName="level">
+                        <mat-option [value]="null">Select level..</mat-option>
+                        <mat-option *ngFor="let level of eLevelTypes | keyvalue" [value]="level.value">
+                            {{level.value}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="rForm.get('level').errors?.required">Level is required</mat-error>
+                </mat-form-field>
             </div>
             <div>
                 <!-- Name -->
-                <label for="name">Name:</label>
-                <input type="text" placeholder="Name" name="name" formControlName="name" class="form-control mb-4">
-                <span style="color: red;" *ngIf="rForm.get('name').errors && (rForm.get('name').touched || rForm.get('name').dirty)">                
-                    <span *ngIf="rForm.get('name').errors.required">Name is required</span> 
-                    <span *ngIf="rForm.get('name').errors.minlength || rForm.get('name').errors.maxlength">Name must be greater than 3 characters and less than 55 characters</span>
-                </span>
+                <mat-form-field [style.width.vw]=80 appearance="fill">
+                    <mat-label>Name: </mat-label>
+                    <input type="text" matInput formControlName="name">
+                    <mat-error *ngIf="rForm.get('name').errors?.required">Name is required</mat-error>
+                    <mat-error
+                        *ngIf="rForm.get('name').errors?.minlength || rForm.get('name').errors?.maxlength">User
+                        name must be greater than 3 characters and less than 55 characters</mat-error>
+                </mat-form-field>
             </div>
             <div>
                 <!-- University -->
-                <label for="university">University:</label>
-                <input type="text" placeholder="University" name="university" formControlName="university" class="form-control mb-4">
-                <span style="color: red;" *ngIf="rForm.get('university').errors && (rForm.get('university').touched || rForm.get('university').dirty)">                
-                    <span *ngIf="rForm.get('university').errors.required">University is required</span> 
-                    <span *ngIf="rForm.get('university').errors.minlength || rForm.get('university').errors.maxlength">University must be greater than 3 characters and less than 55 characters</span>
-                </span>
+                <mat-form-field [style.width.vw]=80 appearance="fill">
+                    <mat-label>University: </mat-label>
+                    <input type="text" matInput formControlName="university">
+                    <mat-error
+                        *ngIf="rForm.get('university').errors?.minlength || rForm.get('university').errors?.maxlength">University
+                        name must be greater than 3 characters and less than 55 characters</mat-error>
+                    <mat-error *ngIf="rForm.get('university').errors?.required">University is required</mat-error>    
+                </mat-form-field>
             </div>
             <div>
                 <!-- Finish date -->
-                <label for="date">Finish date:</label>
-                <input type="text" placeholder="dd/MM/yyyy" name="date" formControlName="date" class="form-control mb-4">
-                <span style="color: red;" *ngIf="rForm.get('date').errors && (rForm.get('date').touched || rForm.get('date').dirty)">                
-                    <span *ngIf="rForm.get('date').errors?.errorFormatDate">Invalid format date</span>
-                </span>
+                <mat-form-field [style.width.vw]=80 appearance="fill">
+                    <mat-label>Finish date: </mat-label>
+                    <input type="text" matInput formControlName="date">
+                    <mat-error *ngIf="rForm.get('date').errors?.errorFormatDate">Invalid format date</mat-error>   
+                </mat-form-field>
             </div>
             <button class="btn btn-primary my-4 float-left" type="submit" [disabled]="rForm.invalid">Save</button>
         </div>

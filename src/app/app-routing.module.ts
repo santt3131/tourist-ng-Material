@@ -18,8 +18,8 @@ const routes: Routes = [
     { path: 'activity-list-user/favorites', component: ActivityListComponent },
     { path: 'profile-language/:uid', component: ProfileLanguageComponent },
     { path: 'profile-language', component: ProfileLanguageComponent },
-    { path: 'profile-education/:uid', component: ProfileEducationComponent },
-    { path: 'profile-education', component: ProfileEducationComponent },
+    { path: 'profile-education/:uid', component: ProfileEducationComponent },//
+    { path: 'profile-education', component: ProfileEducationComponent },//
     { path: 'activities-admin-list', component: ActivitiesAdminListComponent },
     { path: 'activity-admin-detail/:id', component: ActivityAdminDetailComponent },//
     { path: 'activity-admin-detail', component: ActivityAdminDetailComponent },

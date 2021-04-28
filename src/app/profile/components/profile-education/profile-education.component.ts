@@ -73,6 +73,8 @@ export class ProfileEducationComponent implements OnInit {
     this.education.university = this.rForm.get('university').value;
     this.education.finish = this.rForm.get('date').value;
     this.saveOrUpdate(this.education);
+    alert('education was added/modified');
+
   }
 
   // Se guarda un nuevo tipo de educación
@@ -82,6 +84,7 @@ export class ProfileEducationComponent implements OnInit {
     user.educations.push(_education);
     // Se actualiza el usuario
     this.store.dispatch(UserAction.addUserEducation({user}));
+ 
   }
 
   // Se edita una educación
