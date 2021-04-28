@@ -1,49 +1,57 @@
 <div class="container">    
-    <form class="text-center border border-light p-5"  [formGroup]="registerForm" (ngSubmit)="userRegister()">
+    <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px grid" class="text-center border border-light p-5"  [formGroup]="registerForm" (ngSubmit)="userRegister()">
         <!-- User name -->
-        <input type="text"  [formControl]="name" class="form-control mb-4" placeholder="User Name">        
-        <span style="color: red;" *ngIf="registerForm.get('name').errors && (registerForm.get('name').touched || registerForm.get('name').dirty)">
-            <span *ngIf="registerForm.get('name').errors.required">Name is required</span> 
-            <span *ngIf="registerForm.get('name').errors.minlength || registerForm.get('name').errors.maxlength">User name must be greater than 3 characters and less than 55 characters</span>
-            <span *ngIf="registerForm.get('name').errors.pattern">Invalid character</span>
-        </span>            
+        <mat-form-field [style.width.vw]=80 appearance="fill">
+            <mat-label>Name * </mat-label>
+            <input type="text" matInput formControlName="name">
+            <mat-error *ngIf="registerForm.get('name').errors?.required">Name is required</mat-error>
+            <mat-error
+                *ngIf="registerForm.get('name').errors?.minlength || registerForm.get('name').errors?.maxlength">User
+                name must be greater than 3 characters and less than 55 characters</mat-error>
+            <mat-error *ngIf="registerForm.get('name').errors?.pattern">Invalid character</mat-error>
+        </mat-form-field>         
         <!-- User surname -->
-        <input type="text"  [formControl]="surname" class="form-control mb-4" placeholder="User surname">        
-        <span style="color: red;" *ngIf="registerForm.get('surname').errors && (registerForm.get('surname').touched || registerForm.get('surname').dirty)">                
-            <span *ngIf="registerForm.get('surname').errors.minlength || registerForm.get('surname').errors.maxlength">User surname must be greater than 3 characters and less than 55 characters</span>
-            <span *ngIf="registerForm.get('surname').errors.pattern">Invalid character</span>
-        </span>            
+        <mat-form-field [style.width.vw]=80 appearance="fill">
+            <mat-label>Surname</mat-label>
+            <input matInput type="text" formControlName="surname">
+            <mat-error
+                *ngIf="registerForm.get('surname').errors?.minlength || registerForm.get('surname').errors?.maxlength">
+                User surname must be greater than 3 characters and less than 55 characters</mat-error>
+            <mat-error *ngIf="registerForm.get('surname').errors?.pattern">Invalid character</mat-error>
+        </mat-form-field>         
         <!-- User type -->
-        <select [formControl]="type" class="form-control mb-4" placeholder="User type">
-            <option [ngValue]="null">Select user type...</option>                
-            <option *ngFor="let type of eUserTypes | keyvalue" [ngValue]="type.value">{{type.value}}</option>              
-        </select>
+        <mat-form-field [style.width.vw]=80 appearance="fill">
+            <mat-label>Type:</mat-label>
+            <mat-select  formControlName="type">
+                <mat-option [value]="null">Select user type...</mat-option>
+                <mat-option *ngFor="let type of eUserTypes | keyvalue " [value]="type.value">
+                    {{type.value}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
         <!-- E-mail -->
-        <input type="email"  [formControl]="email" class="form-control mb-4" placeholder="E-mail">        
-        <span style="color: red;" *ngIf="registerForm.get('email').errors && (registerForm.get('email').touched || registerForm.get('email').dirty)">
-            <span *ngIf="registerForm.get('email').errors.required">Email is required</span> 
-            <span *ngIf="registerForm.get('email').errors.email">Email doesn't have a correct format</span>   
-        </span>            
+        <mat-form-field [style.width.vw]=80 appearance="fill">
+            <mat-label>Email*</mat-label>
+            <input matInput type="text" formControlName="email">
+            <mat-error *ngIf="registerForm.get('email').errors?.required">Email is required</mat-error> 
+            <mat-error *ngIf="registerForm.get('email').errors?.email">Email doesn't have a correct format</mat-error> 
+        </mat-form-field>            
         <!-- pwd -->
-        <input type="password"  [formControl]="password" class="form-control mb-4" placeholder="Password">
-        <span style="color: red;" *ngIf="registerForm.get('password').errors && (registerForm.get('password').touched || registerForm.get('password').dirty)">
-            <span *ngIf="registerForm.get('password').errors.required">User pwd is required</span>    
-            <span *ngIf="registerForm.get('password').errors.minlength">User password must be greater than 8 characters</span>
-        </span>        
+        <mat-form-field [style.width.vw]=80 appearance="fill">
+            <mat-label>Password*</mat-label>
+            <input matInput type="password" formControlName="password">
+            <mat-error *ngIf="registerForm.get('password').errors?.required">User pwd is required</mat-error> 
+            <mat-error *ngIf="registerForm.get('password').errors?.minlength">User password must be greater than 8 characters</mat-error>
+        </mat-form-field>       
         <!-- Repeat pwd -->
-        <input type="password"  [formControl]="password2" class="form-control mb-4" placeholder="Repeat password">
-        <span style="color: red;" *ngIf="registerForm.get('password2').errors && (registerForm.get('password2').touched || registerForm.get('password2').dirty)">
-            <span *ngIf="registerForm.get('password2').errors.required">Repeat pwd control is required</span>                
-        </span>
+        <mat-form-field [style.width.vw]=80 appearance="fill">
+            <mat-label>Password*</mat-label>
+            <input matInput type="password" formControlName="password2">
+            <mat-error *ngIf="registerForm.get('password2').errors?.required">Repeat pwd is required</mat-error> 
+        </mat-form-field> 
         <!-- Check pwds -->
-        <span style="color: red;" *ngIf="registerForm.errors">
-            <span *ngIf="registerForm.errors.equalValue">Password controls must be equal</span>
-        </span>    
-        <div class="row">
-            <h3 style="color: red;" *ngIf="userState$.error && bSubmitted">
-                That email is already assigned to another user.
-            </h3>
-        </div>
+        <mat-error *ngIf="registerForm.errors?.equalValue">Password controls must be equal</mat-error>
+        <mat-error *ngIf="userState$.error && bSubmitted">That email is already assigned to another user.</mat-error>
         <!-- JOIN NOW BUTTON -->
         <button class="btn btn-primary my-4 float-left"  type="submit" [disabled]="!registerForm.valid">JOIN NOW</button>
     </form>
