@@ -32,7 +32,7 @@
             <div >
                 <mat-form-field [style.width.vw]=80 appearance="fill">
                     <mat-label>Name:</mat-label>
-                    <input type="text" matInput formControlName="name" class="form-control mb-4" />
+                    <input type="text" matInput formControlName="name"/>
                     <mat-error
                         *ngIf="rForm.get('name').errors && (rForm.get('name').touched || rForm.get('name').dirty)">
                         Please enter a valid name
@@ -45,7 +45,7 @@
             <div>
                 <mat-form-field [style.width.vw]=80 appearance="fill">
                     <mat-label>Description:</mat-label>
-                    <input type="text" matInput formControlName="description" class="form-control mb-4" />
+                    <input type="text" matInput formControlName="description"/>
                 </mat-form-field>
             </div>
             <div>
@@ -63,22 +63,16 @@
                 </mat-form-field>
             </div>
             <div>
-            <mat-form-field [style.width.vw]=80 class="example-full-width" appearance="fill">
-                <mat-label>Choose a date</mat-label>
-                <input matInput [matDatepicker]="picker">
-                <mat-datepicker-toggle matSuffix [for]="picker">
-                  <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
-                </mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-                </mat-form-field>
-                <mat-error  *ngIf="rForm.get('date').errors?.errorFormatDate">
-                    Invalid format date
-                </mat-error>
+            <mat-form-field [style.width.vw]=80 appearance="fill">
+                <mat-label>Date:</mat-label>
+                <input type="text" matInput formControlName="date">                
+                <mat-error *ngIf="rForm.get('date').errors?.errorFormatDate">Invalid format date</mat-error>
+            </mat-form-field>
             </div>
             <div>
                 <mat-form-field  [style.width.vw]=80 appearance="fill">
                     <mat-label>Price:</mat-label>
-                    <input type="text" matInput formControlName="price" class="form-control mb-4" />
+                    <input type="text" matInput formControlName="price" />
                     <mat-error *ngIf="rForm.get('price').errors?.errorLessZero">  
                         Price must be greater than zero
                     </mat-error>
@@ -90,7 +84,7 @@
             <div>
                 <mat-form-field [style.width.vw]=80 appearance="fill">
                     <mat-label>Minium Capacity:</mat-label>
-                    <input type="text" matInput formControlName="miniumCapacity" class="form-control mb-4" />
+                    <input type="text" matInput formControlName="miniumCapacity"/>
                     <mat-error *ngIf="rForm.get('miniumCapacity').errors?.errorLessZero">
                         Minium Capacity must be greater than zero
                     </mat-error>
@@ -117,7 +111,5 @@
             <button  [style.width.vw]=40  class="btn btn-primary" type="submit" [disabled]="rForm.invalid">Save</button>
             </div>
         </div>
-
-
     </form>
 </div>

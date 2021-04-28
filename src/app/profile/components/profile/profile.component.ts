@@ -112,6 +112,7 @@ export class ProfileComponent implements OnInit {
 
     // Se guardan los datos del usuario
     this.store.dispatch(UserAction.updateUser({user: this.user}));
+    alert('Save');
   }
 
   // Se recoge la pulsación sobre el botón de borrar idioma

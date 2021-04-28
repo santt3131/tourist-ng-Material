@@ -13,8 +13,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatSelectModule } from '@angular/material/select';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -34,9 +32,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatButtonModule,
     MatIconModule,
     FlexLayoutModule,
-    MatSelectModule,
-    MatDatepickerModule,
-    MatNativeDateModule
+    MatSelectModule
   ],
 })
 export class ActivitiesModule {}

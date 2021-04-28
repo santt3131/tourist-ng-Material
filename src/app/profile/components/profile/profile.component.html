@@ -1,57 +1,95 @@
 <div class="container">    
-    <form class="text-center border border-light p-5" [formGroup]="profileForm" (ngSubmit)="updateProfile()"> 
+    <form class="border border-light p-5" [formGroup]="profileForm" (ngSubmit)="updateProfile()"> 
         <h5 class="float-left" >PROFILE</h5>    
         <br>
         <hr style="border-top: 1px solid blue;"/>
         <!-- Si perfil de usuario company --> 
-        <div *ngIf="companyProfile">
-            <!-- Company name -->   
-            <input type="text"  [formControl]="companyName" class="form-control mb-4" placeholder="Company Name">        
-            <span style="color: red;" *ngIf="profileForm.get('companyName').errors && (profileForm.get('companyName').touched || profileForm.get('companyName').dirty)">
-                <span *ngIf="profileForm.get('companyName').errors.required">Name is required</span> 
-                <span *ngIf="profileForm.get('companyName').errors.minlength || profileForm.get('companyName').errors.maxlength">Company name must be greater than 3 characters and less than 55 characters</span>            
-            </span>
-            <!-- Company description -->   
-            <input type="text"  [formControl]="companyDescription" class="form-control mb-4" placeholder="Company Description">
-            <!-- CIF -->   
-            <input type="text"  [formControl]="cif" class="form-control mb-4" placeholder="CIF">
-        </div>
-        <!-- User name -->   
-        <input type="text"  [formControl]="name" class="form-control mb-4" placeholder="User Name">        
-        <span style="color: red;" *ngIf="profileForm.get('name').errors && (profileForm.get('name').touched || profileForm.get('name').dirty)">
-            <span *ngIf="profileForm.get('name').errors.required">Name is required</span> 
-            <span *ngIf="profileForm.get('name').errors.minlength || profileForm.get('name').errors.maxlength">User name must be greater than 3 characters and less than 55 characters</span>
-            <span *ngIf="profileForm.get('name').errors.pattern">Invalid character</span>
-        </span>            
+        
+        <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="32px" class="form-group">
+            <div *ngIf="companyProfile">
+                <!-- Company name -->   
+                <mat-form-field [style.width.vw]=80 appearance="fill">
+                    <mat-label>Company Name</mat-label>
+                    <input type="text" matInput formControlName="companyName" class="form-control mb-4" placeholder="Company Name">        
+                    <mat-error *ngIf="profileForm.get('companyName').errors?.required">Name is required</mat-error> 
+                    <mat-error *ngIf="profileForm.get('companyName').errors?.minlength || profileForm.get('companyName').errors?.maxlength">Company name must be greater than 3 characters and less than 55 characters</mat-error>  
+                </mat-form-field> 
+                <!-- Company description -->   
+                <mat-form-field [style.width.vw]=80 appearance="fill">
+                    <mat-label>Company Description</mat-label>
+                    <input type="text"matInput  formControlName="companyDescription">
+                </mat-form-field>
+                <!-- CIF -->   
+                <mat-form-field [style.width.vw]=80 appearance="fill">
+                    <mat-label>CIF</mat-label>
+                    <input type="text" matInput  formControlName="cif">
+                </mat-form-field>
+            </div>
+        <!-- User name -->
+        <mat-form-field [style.width.vw]=80 appearance="fill">
+            <mat-label>User Name</mat-label>
+            <input type="text" matInput formControlName="name">
+                <mat-error *ngIf="profileForm.get('name').errors?.required">Name is required</mat-error> 
+                <mat-error *ngIf="profileForm.get('name').errors?.minlength || profileForm.get('name').errors?.maxlength">User name must be greater than 3 characters and less than 55 characters</mat-error>
+                <mat-error *ngIf="profileForm.get('name').errors?.pattern">Invalid character</mat-error>
+        </mat-form-field>              
         <!-- Surname -->
-        <input type="text"  [formControl]="surname" class="form-control mb-4" placeholder="Surname">        
-        <span style="color: red;" *ngIf="profileForm.get('surname').errors && (profileForm.get('surname').touched || profileForm.get('surname').dirty)">                
-            <span *ngIf="profileForm.get('surname').errors.minlength || profileForm.get('surname').errors.maxlength">User surname must be greater than 3 characters and less than 55 characters</span>
-            <span *ngIf="profileForm.get('surname').errors.pattern">Invalid character</span>
-        </span>            
+        <mat-form-field [style.width.vw]=80 appearance="fill">
+            <mat-label>Surname</mat-label> 
+            <input matInput type="text"  formControlName="surname">                    
+            <mat-error *ngIf="profileForm.get('surname').errors?.minlength || profileForm.get('surname').errors?.maxlength">User surname must be greater than 3 characters and less than 55 characters</mat-error>
+            <mat-error *ngIf="profileForm.get('surname').errors?.pattern">Invalid character</mat-error>
+        </mat-form-field>           
         <!-- Birth date-->
-        <input type="text" placeholder="dd/MM/yyyy"  [formControl]="birthDate" class="form-control mb-4" placeholder="Birth Date">
-        <span style="color: red;" *ngIf="profileForm.get('birthDate').errors && (profileForm.get('birthDate').touched || profileForm.get('birthDate').dirty)">                
-            <span *ngIf="profileForm.get('birthDate').errors?.errorFormatDate">Invalid format date</span>
-        </span>           
+        <mat-form-field [style.width.vw]=80 appearance="fill">
+            <mat-label>Birth Date</mat-label>    
+            <input type="text" matInput  formControlName="birthDate">                
+            <mat-error *ngIf="profileForm.get('birthDate').errors?.errorFormatDate">Invalid format date</mat-error>
+        </mat-form-field>               
         <!-- Phone -->
-        <input type="number"  [formControl]="phone" class="form-control mb-4" placeholder="Phone">            
+        <mat-form-field [style.width.vw]=80 appearance="fill">
+            <mat-label>Phone</mat-label>    
+            <input type="number" matInput formControlName="phone">            
+        </mat-form-field> 
         <!-- Nacionality -->
-        <select [formControl]="nationality" class="form-control mb-4" placeholder="Nacionality">
-            <option [ngValue]="null">Select nacionality...</option>                
-            <option *ngFor="let nationality of eUserNationalities | keyvalue" [ngValue]="nationality.value">{{nationality.value}}</option>              
-        </select>
+        <mat-form-field [style.width.vw]=80 appearance="fill">
+            <mat-label>Language: </mat-label>
+            <mat-select  formControlName="nationality">
+                <mat-option [value]="null">Select nationality...</mat-option>
+                <mat-option *ngFor="let nationality of eUserNationalities | keyvalue " [value]="nationality.value">
+                    {{nationality.value}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
         <!-- NIF -->
-        <input type="text"  [formControl]="nif" class="form-control mb-4" placeholder="NIF">          
+        <mat-form-field [style.width.vw]=80 appearance="fill">
+            <mat-label>NIF</mat-label> 
+            <input type="text" matInput formControlName="nif">  
+            <!-- <mat-error *ngIf="profileForm.get('nif').errors?.errorNIF">Wrong NIF</mat-error> -->
+        </mat-form-field> 
+        <!-- <mat-error *ngIf="profileForm.errors?.errorNIF">Wrong NIF</mat-error> -->
         <!-- Check NIF -->
-        <span style="color: red;" *ngIf="profileForm.errors">
+        <!-- <span style="color: red;" *ngIf="profileForm.errors">
             <span *ngIf="profileForm.errors?.errorNIF">Wrong NIF</span>
-        </span>  
+        </span>   -->
+
+        <!--<mat-error *ngIf="profileForm.get('surname').errors?-->
         <!-- About me -->
-        <textarea [formControl]="aboutMe" class="form-control mb-4" placeholder="About me"></textarea>
+        <mat-form-field [style.width.vw]=80 appearance="fill">
+            <mat-label>About me</mat-label>
+            <textarea formControlName="aboutMe" matInput ></textarea>
+        </mat-form-field> 
         <!-- UPDATE BUTTON -->
         <button class="btn btn-primary my-4 float-left" type="submit" [disabled]="!profileForm.valid">UPDATE PROFILE INFORMATION</button>        
+        </div>
+    
     </form>
+
+
+
+
+
+
     <form class="text-center border border-light p-5"> 
         <br>
         <h5 class="float-left">EDUCATION</h5>
