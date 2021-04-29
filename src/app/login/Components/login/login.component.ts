@@ -11,7 +11,6 @@ import { AppState } from 'src/app/app.reducers';
 import { Store } from '@ngrx/store';
 import { LoginState } from '../../reducers';
 import * as LoginAction from '../../actions';
-import { Overlay } from '@angular/cdk/overlay';
 import { ProgressSpinnerService } from 'src/app/views/progress-spinner.service';
 
 @Component({
