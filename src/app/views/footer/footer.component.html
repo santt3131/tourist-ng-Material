@@ -1,11 +1,7 @@
-<!-- Footer -->
-<footer class="footer">
-
-    <!-- Copyright -->
-    <div class="footer-copyright text-center py-3 text-white">Copyright ©
-        <a [innerHTML] = "currentYear"></a>
-        <a class="text-white" href="https://mdbootstrap.com/"> MDBootstrap.com</a>      
-    </div>
-    <!-- Copyright -->
-
+<footer>
+    <mat-toolbar  class="my-footer" color="primary">
+        <mat-toolbar-row   fxLayoutAlign="center center">
+            Copyright © <a [innerHTML]="currentYear"></a> - Universitat Oberta Catalunya
+        </mat-toolbar-row>
+    </mat-toolbar>
 </footer>
